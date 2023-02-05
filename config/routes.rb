@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'posts/new'
+  get 'posts/create'
+  get 'posts/index'
   devise_for :users
 
   devise_scope :user do
@@ -8,4 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "devise/sessions#new"
+
+  resources :posts, only: [:new, :create, :index]
 end
