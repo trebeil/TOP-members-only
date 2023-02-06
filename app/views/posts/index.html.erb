@@ -1,7 +1,9 @@
-<h1>Posts#index</h1>
+<h1>Posts</h1>
+
+<%= link_to "New post", new_post_path %>
 
 <% if @posts.none? %>
-  <div>There are no posts by now.</div>
+  <div>There are no posts yet.</div>
 <% else %>
   <% @posts.each do |post| %>
     <h2> <%= post.title %> </h2> 
@@ -11,5 +13,3 @@
     <% end %>
   <% end %>
 <% end %>
-
-<%= link_to "New post", new_post_path %>
