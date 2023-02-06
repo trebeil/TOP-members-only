@@ -1,5 +1,16 @@
 <h1>Posts#new</h1>
 
+<% if @post.errors.any? %>
+  <div>
+    Please observe the following problems and try again:
+  </div>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @post, data: { turbo: "false" } do |form| %>
   <div>
     <%= form.label :title %>
