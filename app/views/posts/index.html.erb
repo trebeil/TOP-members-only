@@ -1,2 +1,15 @@
 <h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<% if @posts.none? %>
+  <div>There are no posts by now.</div>
+<% else %>
+  <% @posts.each do |post| %>
+    <h2> <%= post.title %> </h2> 
+    <p> <%= post.body %> </p>
+    <% if user_signed_in? %>
+      <div> Author: <%= User.find_by(id: post.user_id).email %> </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to "New post", new_post_path %>
